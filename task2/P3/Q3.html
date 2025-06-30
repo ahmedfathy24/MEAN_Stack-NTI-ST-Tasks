@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Password Toggle</title>
+<style>
+    #eye {
+        cursor: pointer;
+        font-size: 20px;
+        margin-left: 5px;
+    }
+</style>
+</head>
+<body>
+<h3>Password Input with Show/Hide Toggle:</h3>
+<input type="password" id="myPass" placeholder="Enter password">
+<span onclick="togglePassword()" id="eye">👁</span>
+<script>
+    function togglePassword() {
+    const pass = document.getElementById("myPass");
+    const eye = document.getElementById("eye");
+
+    if (pass.type === "password") {
+        pass.type = "text";
+        eye.textContent = "Hide";
+    } else {
+        pass.type = "password";
+        eye.textContent = "👁";
+    }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clone Div on Click</title>
+<style>
+    #myDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    width: 150px;
+    height: 150px;
+    background-color: lightblue;
+    text-align: center;
+    border: 2px solid black;
+    margin: 10px;
+    }
+</style>
+</head>
+<body>
+<div id="myDiv">Click me to clone!</div>
+<script>
+    const originalDiv = document.getElementById("myDiv");
+    originalDiv.addEventListener("click", function () {
+    const clone = originalDiv.cloneNode(true);
+    const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    clone.style.backgroundColor = randomColor;
+    document.body.appendChild(clone);
+    });
+</script>
+</body>
+</html>

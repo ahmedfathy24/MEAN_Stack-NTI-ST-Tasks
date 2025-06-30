@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Custom Number Input</title>
+</head>
+<body>
+
+<h3>Only numbers allowed in this field:</h3>
+<input type="text" placeholder="Enter numbers only" onkeypress="allowOnlyNumbers(event)">
+
+<script>
+    function allowOnlyNumbers(e) {
+        let key = e.key;
+        if (key < '0' || key > '9') {
+            e.preventDefault();
+        }
+    }
+</script>
+
+</body>
+</html>
