@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showCards_getMethod</title>
+</head>
+<style>
+    .card {
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 20px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+    .card h3 {
+        margin-top: 0;
+        font-size: 20px;
+        color: #333;
+    }
+    .card p {
+        font-size: 16px;
+        color: #555;
+    }
+</style>
+<body>
+    <h3>Enter numbers of cards you need to view in this field:</h3>
+    <input type="text" placeholder="Enter the number" id="numOfCards" onkeypress="allowOnlyNumbers(event)">
+    <button onclick="showCards()">Show Cards</button>
+    <div id="card"></div>
+    <script>
+        function allowOnlyNumbers(e) {
+            let key = e.key;
+            if (key < '0' || key > '9') {
+                e.preventDefault();
+            }
+        }
+        function showCards() {
+            let numOfCards = document.getElementById('numOfCards').value;
+            numOfCards = parseInt(numOfCards); 
+            console.log("Number of cards:", numOfCards);
+            let container = document.getElementById('card');
+            container.innerHTML = ""; 
+            for (let i = 1; i <= numOfCards; i++) {
+                fetch(`https://jsonplaceholder.typicode.com/posts/${i}`)
+                .then(response => response.json())
+                .then(data => {
+                    const card = document.createElement('div');
+                    card.className='card';
+                    card.innerHTML=`<h2>${data.id}</h2>
+                        <h3>${data.title}</h3>
+                        <p>${data.body}</p>`;
+                    document.getElementById('card').appendChild(card);
+                })
+                .catch(err => console.error(err));
+            }
+        }
+    </script>
+</body>
+</html>
