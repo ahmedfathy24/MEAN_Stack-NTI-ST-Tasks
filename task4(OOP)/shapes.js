@@ -18,19 +18,18 @@ class Shape {
 class Square extends Shape {
     constructor(w, name = "Square") {
         super(name);
-        this.side = w;
+        this.width = w;
     }
     getArea() {
-    return this.side * this.side;
+    return this.width * this.width;
     }
     getPerimeter() {
-    return 4 * this.side;
+    return 4 * this.width;
     }
 }
 class Rectangle extends Square {
     constructor(w ,h) {
         super(w, "Rectangle");
-        this.width = w;
         this.height = h;
     }
     getArea() {
